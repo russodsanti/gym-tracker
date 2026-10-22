@@ -46,7 +46,7 @@ header h1 {
     margin-top: 4px;
 }
 
-/* Pestañas (Scroll horizontal para que entren todas cómodas) */
+/* Pestañas */
 .nav-tabs {
     display: flex;
     gap: 6px;
@@ -108,7 +108,6 @@ header h1 {
     color: var(--accent);
 }
 
-/* Leyenda de Colores */
 .rank-legend {
     display: flex;
     flex-wrap: wrap;
@@ -135,7 +134,6 @@ header h1 {
     background-color: var(--color);
 }
 
-/* Formularios */
 .form-group {
     margin-bottom: 14px;
 }
@@ -179,7 +177,6 @@ input:focus, select:focus {
     gap: 10px;
 }
 
-/* Tarjeta de Ejercicio en Rutina */
 .routine-exercise-box {
     background-color: var(--bg-input);
     border: 1px solid var(--border-color);
@@ -222,7 +219,6 @@ input:focus, select:focus {
     min-width: 50px;
 }
 
-/* Botones */
 .btn {
     padding: 10px 16px;
     border: none;
@@ -253,7 +249,6 @@ input:focus, select:focus {
     background-color: #3a3a3a;
 }
 
-/* Banner informativo */
 .info-banner {
     background-color: var(--info-bg);
     border: 1px solid var(--border-color);
@@ -265,7 +260,6 @@ input:focus, select:focus {
     line-height: 1.4;
 }
 
-/* Listas e items */
 .temp-exercise-list {
     list-style: none;
     padding: 0;
@@ -291,7 +285,6 @@ input:focus, select:focus {
     font-size: 13px;
 }
 
-/* Tarjetas de Rutinas Guardadas */
 .routine-card {
     background-color: var(--bg-input);
     border: 1px solid var(--border-color);
@@ -327,7 +320,6 @@ input:focus, select:focus {
     border-bottom: none;
 }
 
-/* Badges y tarjetas musculares */
 .muscle-badge {
     background-color: #2c2c2c;
     color: var(--accent);
@@ -362,7 +354,6 @@ input:focus, select:focus {
     font-size: 15px;
 }
 
-/* Logbook (Historial de Sesiones) */
 .logbook-card {
     background-color: var(--bg-input);
     border: 1px solid var(--border-color);
@@ -379,7 +370,6 @@ input:focus, select:focus {
     justify-content: space-between;
 }
 
-/* Logros / Medallas */
 .logros-grid {
     display: flex;
     flex-direction: column;
