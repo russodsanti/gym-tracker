@@ -1,40 +1,69 @@
-// --- CATÁLOGO DE EJERCICIOS Y RANGOS ---
+// --- CATÁLOGO DE EJERCICIOS (CON MARCA UNILATERAL) ---
 const catalogoEjercicios = {
-    "Banco plano con barra": { musculo: "Pecho", rangos: [30, 60, 90, 120] },
-    "Banco plano con mancuernas": { musculo: "Pecho", rangos: [12, 22, 34, 44] },
-    "Banco inclinado con barra": { musculo: "Pecho", rangos: [25, 50, 75, 100] },
-    "Banco inclinado con mancuernas": { musculo: "Pecho", rangos: [10, 20, 30, 40] },
-    "Pec Deck / Mariposa": { musculo: "Pecho", rangos: [25, 45, 70, 95] },
+    // PECHO
+    "Banco plano con barra": { musculo: "Pecho", rangos: [30, 60, 90, 120], unilateral: false },
+    "Banco plano con mancuernas": { musculo: "Pecho", rangos: [30, 60, 90, 120], unilateral: true },
+    "Banco inclinado con barra": { musculo: "Pecho", rangos: [25, 50, 75, 100], unilateral: false },
+    "Banco inclinado con mancuernas": { musculo: "Pecho", rangos: [25, 50, 75, 100], unilateral: true },
+    "Banco declinado": { musculo: "Pecho", rangos: [30, 65, 95, 125], unilateral: false },
+    "Aperturas en banco plano": { musculo: "Pecho", rangos: [16, 28, 44, 60], unilateral: true },
+    "Cruce de poleas": { musculo: "Pecho", rangos: [20, 40, 60, 80], unilateral: true },
+    "Pec Deck / Mariposa": { musculo: "Pecho", rangos: [25, 45, 70, 95], unilateral: false },
+    "Flexiones de brazo (Push-ups)": { musculo: "Pecho", rangos: [0, 15, 30, 50], unilateral: false },
 
-    "Tirón al pecho en polea": { musculo: "Espalda", rangos: [30, 55, 80, 105] },
-    "Remo con barra": { musculo: "Espalda", rangos: [30, 60, 85, 110] },
-    "Remo con mancuerna (un brazo)": { musculo: "Espalda", rangos: [14, 26, 38, 50] },
-    "Peso muerto tradicional": { musculo: "Espalda", rangos: [50, 100, 150, 200] },
+    // ESPALDA
+    "Tirón al pecho en polea": { musculo: "Espalda", rangos: [30, 55, 80, 105], unilateral: false },
+    "Remo con barra": { musculo: "Espalda", rangos: [30, 60, 85, 110], unilateral: false },
+    "Remo con mancuerna (un brazo)": { musculo: "Espalda", rangos: [28, 52, 76, 100], unilateral: true },
+    "Remo bajo en polea (Gironda)": { musculo: "Espalda", rangos: [30, 55, 80, 105], unilateral: false },
+    "Peso muerto tradicional": { musculo: "Espalda", rangos: [50, 100, 150, 200], unilateral: false },
+    "Dominadas": { musculo: "Espalda", rangos: [0, 10, 20, 35], unilateral: false },
+    "Pull-over en polea alta": { musculo: "Espalda", rangos: [15, 30, 45, 60], unilateral: false },
 
-    "Sentadilla libre con barra": { musculo: "Cuádriceps", rangos: [40, 80, 120, 160] },
-    "Prensa 45°": { musculo: "Cuádriceps", rangos: [80, 160, 240, 320] },
-    "Sillón de cuádriceps": { musculo: "Cuádriceps", rangos: [30, 55, 80, 105] },
-    "Sentadilla búlgara": { musculo: "Cuádriceps", rangos: [10, 20, 30, 40] },
+    // CUÁDRICEPS
+    "Sentadilla libre con barra": { musculo: "Cuádriceps", rangos: [40, 80, 120, 160], unilateral: false },
+    "Prensa 45°": { musculo: "Cuádriceps", rangos: [80, 160, 240, 320], unilateral: false },
+    "Sillón de cuádriceps": { musculo: "Cuádriceps", rangos: [30, 55, 80, 105], unilateral: false },
+    "Sentadilla búlgara": { musculo: "Cuádriceps", rangos: [20, 40, 60, 80], unilateral: true },
+    "Hack Squat": { musculo: "Cuádriceps", rangos: [40, 90, 140, 190], unilateral: false },
+    "Estocadas / Zancadas": { musculo: "Cuádriceps", rangos: [20, 40, 60, 80], unilateral: true },
 
-    "Camilla acostado (Femoral)": { musculo: "Isquiotibiales", rangos: [20, 40, 60, 80] },
-    "Peso muerto rumano (Glúteos/Femoral)": { musculo: "Isquiotibiales", rangos: [35, 70, 105, 140] },
+    // ISQUIOTIBIALES
+    "Camilla acostado (Femoral)": { musculo: "Isquiotibiales", rangos: [20, 40, 60, 80], unilateral: false },
+    "Peso muerto rumano": { musculo: "Isquiotibiales", rangos: [35, 70, 105, 140], unilateral: false },
+    "Femoral sentado en máquina": { musculo: "Isquiotibiales", rangos: [20, 45, 70, 95], unilateral: false },
 
-    "Aductores en máquina": { musculo: "Aductores", rangos: [20, 40, 60, 80] },
-    "Abductores en máquina": { musculo: "Abductores", rangos: [20, 40, 60, 80] },
+    // ADUCTORES Y ABDUCTORES
+    "Aductores en máquina": { musculo: "Aductores", rangos: [20, 40, 60, 80], unilateral: false },
+    "Abductores en máquina": { musculo: "Abductores", rangos: [20, 40, 60, 80], unilateral: false },
 
-    "Gemelos de pie en máquina": { musculo: "Gemelos", rangos: [30, 60, 90, 120] },
-    "Gemelos sentado": { musculo: "Gemelos", rangos: [20, 40, 60, 80] },
+    // GEMELOS
+    "Gemelos de pie en máquina": { musculo: "Gemelos", rangos: [30, 60, 90, 120], unilateral: false },
+    "Gemelos sentado": { musculo: "Gemelos", rangos: [20, 40, 60, 80], unilateral: false },
+    "Elevación de talones con mancuerna": { musculo: "Gemelos", rangos: [20, 40, 60, 80], unilateral: true },
 
-    "Press militar de pie con barra": { musculo: "Hombro", rangos: [20, 40, 60, 80] },
-    "Vuelos laterales con mancuerna": { musculo: "Hombro", rangos: [6, 12, 18, 24] },
+    // HOMBRO
+    "Press militar de pie con barra": { musculo: "Hombro", rangos: [20, 40, 60, 80], unilateral: false },
+    "Press sentado con mancuernas": { musculo: "Hombro", rangos: [20, 40, 60, 80], unilateral: true },
+    "Vuelos laterales con mancuerna": { musculo: "Hombro", rangos: [12, 24, 36, 48], unilateral: true },
+    "Vuelos posteriores (Pájaro)": { musculo: "Hombro", rangos: [12, 24, 36, 48], unilateral: true },
+    "Encogimientos de hombros (Trapecio)": { musculo: "Hombro", rangos: [20, 45, 70, 95], unilateral: false },
 
-    "Curl de bíceps con barra recta": { musculo: "Bíceps", rangos: [15, 30, 45, 60] },
-    "Curl alterno con mancuernas": { musculo: "Bíceps", rangos: [8, 16, 24, 32] },
+    // BÍCEPS
+    "Curl de bíceps con barra recta": { musculo: "Bíceps", rangos: [15, 30, 45, 60], unilateral: false },
+    "Curl alterno con mancuernas": { musculo: "Bíceps", rangos: [16, 32, 48, 64], unilateral: true },
+    "Curl martillo con mancuernas": { musculo: "Bíceps", rangos: [20, 36, 52, 68], unilateral: true },
+    "Curl en banco Scott / Predicador": { musculo: "Bíceps", rangos: [12, 25, 38, 50], unilateral: false },
 
-    "Press francés con barra W": { musculo: "Tríceps", rangos: [15, 30, 45, 60] },
-    "Tríceps en polea alta con cuerda": { musculo: "Tríceps", rangos: [15, 30, 45, 60] },
+    // TRÍCEPS
+    "Press francés con barra W": { musculo: "Tríceps", rangos: [15, 30, 45, 60], unilateral: false },
+    "Tríceps en polea alta con cuerda": { musculo: "Tríceps", rangos: [15, 30, 45, 60], unilateral: false },
+    "Copita sobre la cabeza": { musculo: "Tríceps", rangos: [12, 22, 32, 42], unilateral: false },
+    "Fondos en paralelas": { musculo: "Tríceps", rangos: [0, 10, 20, 35], unilateral: false },
 
-    "Curl de antebrazo con barra (Palmas arriba)": { musculo: "Antebrazos", rangos: [10, 20, 30, 40] }
+    // ANTEBRAZOS
+    "Curl de antebrazo (Palmas arriba)": { musculo: "Antebrazos", rangos: [10, 20, 30, 40], unilateral: false },
+    "Curl de antebrazo reverso (Palmas abajo)": { musculo: "Antebrazos", rangos: [8, 15, 22, 30], unilateral: false }
 };
 
 const COLORES_NIVEL = {
@@ -46,20 +75,19 @@ const COLORES_NIVEL = {
     5: "#06b6d4"
 };
 
-// --- ESTADO LOCAL ---
 let entrenamientos = JSON.parse(localStorage.getItem('gym_tracker_data')) || [];
 let rutinasGuardadas = JSON.parse(localStorage.getItem('gym_tracker_rutinas')) || [];
 let historialSesiones = JSON.parse(localStorage.getItem('gym_tracker_logbook')) || [];
 let ejerciciosRutinaTemporal = [];
 let miChart = null;
 
-// --- ELEMENTOS DOM ---
 const tabRegistrarBtn = document.getElementById('btn-tab-registrar');
 const tabRutinasBtn = document.getElementById('btn-tab-rutinas');
 const tabNivelesBtn = document.getElementById('btn-tab-niveles');
 const tabStatsBtn = document.getElementById('btn-tab-stats');
 const tabLogbookBtn = document.getElementById('btn-tab-logbook');
 const tabLogrosBtn = document.getElementById('btn-tab-logros');
+const tabConfigBtn = document.getElementById('btn-tab-config');
 
 const seccionRegistrar = document.getElementById('seccion-registrar');
 const seccionRutinas = document.getElementById('seccion-rutinas');
@@ -67,6 +95,7 @@ const seccionNiveles = document.getElementById('seccion-niveles');
 const seccionStats = document.getElementById('seccion-stats');
 const seccionLogbook = document.getElementById('seccion-logbook');
 const seccionLogros = document.getElementById('seccion-logros');
+const seccionConfig = document.getElementById('seccion-config');
 
 const workoutForm = document.getElementById('workout-form');
 const inputEjercicio = document.getElementById('ejercicio');
@@ -91,41 +120,52 @@ function normalizarTexto(texto) {
     return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 }
 
+function esEjercicioUnilateral(nombre) {
+    if (catalogoEjercicios[nombre] !== undefined) {
+        return catalogoEjercicios[nombre].unilateral;
+    }
+    const n = normalizarTexto(nombre);
+    return n.includes('mancuerna') || n.includes('alterno') || n.includes('un brazo') || n.includes('una pierna') || n.includes('bulgara');
+}
+
 function obtenerGrupoMuscular(nombre) {
     if (catalogoEjercicios[nombre]) return catalogoEjercicios[nombre].musculo;
     
     const n = normalizarTexto(nombre);
     if (n.includes('antebrazo')) return 'Antebrazos';
-    if (n.includes('cuadriceps') || n.includes('sentadilla') || n.includes('prensa')) return 'Cuádriceps';
+    if (n.includes('cuadriceps') || n.includes('sentadilla') || n.includes('prensa') || n.includes('bulgara') || n.includes('hack')) return 'Cuádriceps';
     if (n.includes('femoral') || n.includes('isquio') || n.includes('rumano')) return 'Isquiotibiales';
     if (n.includes('aductor')) return 'Aductores';
     if (n.includes('abductor')) return 'Abductores';
-    if (n.includes('gemelo') || n.includes('pantorrilla')) return 'Gemelos';
-    if (n.includes('pecho') || n.includes('banco') || n.includes('plano') || n.includes('apertura') || n.includes('mariposa') || n.includes('mapeck')) return 'Pecho';
+    if (n.includes('gemelo') || n.includes('pantorrilla') || n.includes('talon')) return 'Gemelos';
+    if (n.includes('pecho') || n.includes('banco') || n.includes('plano') || n.includes('apertura') || n.includes('mariposa') || n.includes('flexiones')) return 'Pecho';
     if (n.includes('espalda') || n.includes('remo') || n.includes('tiron') || n.includes('dominada') || n.includes('muerto') || n.includes('pullover')) return 'Espalda';
-    if (n.includes('hombro') || n.includes('vuelos') || n.includes('militar') || n.includes('pajaro') || n.includes('trapecio') || n.includes('arnold')) return 'Hombro';
+    if (n.includes('hombro') || n.includes('vuelos') || n.includes('militar') || n.includes('pajaro') || n.includes('trapecio')) return 'Hombro';
     if (n.includes('bicep') || n.includes('curl') || n.includes('scott') || n.includes('martillo')) return 'Bíceps';
-    if (n.includes('tricep') || n.includes('frances') || n.includes('copita') || n.includes('patada') || n.includes('fondos')) return 'Tríceps';
+    if (n.includes('tricep') || n.includes('frances') || n.includes('copita') || n.includes('fondos')) return 'Tríceps';
     
     return 'Cuádriceps';
 }
 
-function calcularRangoEjercicio(nombreEjercicio, pesoMaximo) {
+function calcularRangoEjercicio(nombreEjercicio, pesoIngresado) {
+    const esUnilateral = esEjercicioUnilateral(nombreEjercicio);
+    const pesoEfectivo = esUnilateral ? (pesoIngresado * 2) : pesoIngresado;
+
     let rangos = [20, 40, 60, 80];
     if (catalogoEjercicios[nombreEjercicio]) {
         rangos = catalogoEjercicios[nombreEjercicio].rangos;
     }
 
-    if (pesoMaximo < rangos[0]) return { nivel: 1, nombre: "Novato" };
-    if (pesoMaximo < rangos[1]) return { nivel: 2, nombre: "Principiante" };
-    if (pesoMaximo < rangos[2]) return { nivel: 3, nombre: "Intermedio" };
-    if (pesoMaximo < rangos[3]) return { nivel: 4, nombre: "Avanzado" };
-    return { nivel: 5, nombre: "Élite" };
+    if (pesoEfectivo < rangos[0]) return { nivel: 1, nombre: "Novato", pesoEfectivo };
+    if (pesoEfectivo < rangos[1]) return { nivel: 2, nombre: "Principiante", pesoEfectivo };
+    if (pesoEfectivo < rangos[2]) return { nivel: 3, nombre: "Intermedio", pesoEfectivo };
+    if (pesoEfectivo < rangos[3]) return { nivel: 4, nombre: "Avanzado", pesoEfectivo };
+    return { nivel: 5, nombre: "Élite", pesoEfectivo };
 }
 
 function cambiarPestana(pestana) {
-    [tabRegistrarBtn, tabRutinasBtn, tabNivelesBtn, tabStatsBtn, tabLogbookBtn, tabLogrosBtn].forEach(b => b.classList.remove('active'));
-    [seccionRegistrar, seccionRutinas, seccionNiveles, seccionStats, seccionLogbook, seccionLogros].forEach(s => s.classList.remove('active'));
+    [tabRegistrarBtn, tabRutinasBtn, tabNivelesBtn, tabStatsBtn, tabLogbookBtn, tabLogrosBtn, tabConfigBtn].forEach(b => b && b.classList.remove('active'));
+    [seccionRegistrar, seccionRutinas, seccionNiveles, seccionStats, seccionLogbook, seccionLogros, seccionConfig].forEach(s => s && s.classList.remove('active'));
 
     if (pestana === 'registrar') {
         tabRegistrarBtn.classList.add('active');
@@ -149,6 +189,9 @@ function cambiarPestana(pestana) {
         tabLogrosBtn.classList.add('active');
         seccionLogros.classList.add('active');
         renderizarLogros();
+    } else if (pestana === 'config') {
+        tabConfigBtn.classList.add('active');
+        seccionConfig.classList.add('active');
     }
 }
 
@@ -181,17 +224,20 @@ function buscarUltimoPeso() {
     }
 
     const musculo = obtenerGrupoMuscular(nombre);
+    const esUnil = esEjercicioUnilateral(nombre);
     const nombreNorm = normalizarTexto(nombre);
     const previos = entrenamientos.filter(i => normalizarTexto(i.ejercicio) === nombreNorm);
+
+    let textoAclaratorio = esUnil ? `<br><small style="color:var(--text-secondary);">💡 Ejercicio unilateral: Ingresá el peso de 1 sola mancuerna/lado.</small>` : "";
 
     if (previos.length > 0) {
         const maxPeso = Math.max(...previos.map(p => parseFloat(p.peso)));
         const rangoInfo = calcularRangoEjercicio(nombre, maxPeso);
         const ultimo = previos[previos.length - 1];
 
-        infoUltimoPeso.innerHTML = `🎯 <strong>${musculo}</strong> | 🏆 Rango: <span class="rank-badge" style="background:${COLORES_NIVEL[rangoInfo.nivel]}; color:#000;">${rangoInfo.nombre}</span><br>⚡ Último registro: <strong>${ultimo.peso} kg</strong> (${ultimo.repeticiones} reps) el ${ultimo.fecha}`;
+        infoUltimoPeso.innerHTML = `🎯 <strong>${musculo}</strong> | 🏆 Rango: <span class="rank-badge" style="background:${COLORES_NIVEL[rangoInfo.nivel]}; color:#000;">${rangoInfo.nombre}</span><br>⚡ Último registro: <strong>${ultimo.peso} kg ${esUnil ? '/lado' : ''}</strong> (${ultimo.repeticiones} reps) el ${ultimo.fecha}${textoAclaratorio}`;
     } else {
-        infoUltimoPeso.innerHTML = `🎯 <strong>${musculo}</strong> | 💡 Es la primera vez que vas a anotar este ejercicio.`;
+        infoUltimoPeso.innerHTML = `🎯 <strong>${musculo}</strong> | 💡 Es la primera vez que vas a anotar este ejercicio.${textoAclaratorio}`;
     }
 }
 
@@ -212,15 +258,17 @@ function cargarRutinaParaEntrenar() {
 
     rutina.ejercicios.forEach((ej, eIdx) => {
         const musculo = obtenerGrupoMuscular(ej);
+        const esUnil = esEjercicioUnilateral(ej);
         const ejNorm = normalizarTexto(ej);
         const previos = entrenamientos.filter(i => normalizarTexto(i.ejercicio) === ejNorm);
         
         let historialTexto = "💡 Sin registros anteriores.";
+        let notaUnilateral = esUnil ? `<br><small style="color:#aaa;">(Ingresá peso por lado/mancuerna)</small>` : "";
 
         if (previos.length > 0) {
             const maxPeso = Math.max(...previos.map(p => parseFloat(p.peso)));
             const rangoInfo = calcularRangoEjercicio(ej, maxPeso);
-            let ultimos3 = previos.slice(-3).map(p => `• <strong>${p.peso} kg</strong> x ${p.repeticiones} reps (${p.fecha})`).join('<br>');
+            let ultimos3 = previos.slice(-3).map(p => `• <strong>${p.peso} kg ${esUnil ? '/lado' : ''}</strong> x ${p.repeticiones} reps (${p.fecha})`).join('<br>');
             
             historialTexto = `🏆 Rango: <span class="rank-badge" style="background:${COLORES_NIVEL[rangoInfo.nivel]}; color:#000;">${rangoInfo.nombre}</span><br>📌 <strong>Últimas marcas:</strong><br>${ultimos3}`;
         }
@@ -228,7 +276,7 @@ function cargarRutinaParaEntrenar() {
         const div = document.createElement('div');
         div.className = 'routine-exercise-box';
         div.innerHTML = `
-            <h4>${ej} <span class="muscle-badge">${musculo}</span></h4>
+            <h4>${ej} <span class="muscle-badge">${musculo}</span> ${notaUnilateral}</h4>
             <div class="historial-directo-box">${historialTexto}</div>
             
             <div class="form-group" style="margin-bottom: 8px;">
@@ -281,6 +329,7 @@ routineWorkoutForm.addEventListener('submit', (e) => {
         const reps = container.querySelectorAll('.serie-reps');
         const notaInput = container.parentElement.querySelector('.nota-ejercicio-rutina');
         const notaEj = notaInput ? notaInput.value.trim() : "";
+        const esUnil = esEjercicioUnilateral(ej);
 
         let seriesDetalle = [];
         pesos.forEach((pInput, sIdx) => {
@@ -296,7 +345,7 @@ routineWorkoutForm.addEventListener('submit', (e) => {
                     nota: notaEj
                 };
                 entrenamientos.push(item);
-                seriesDetalle.push(`${pesoVal}kg x ${repsVal} reps`);
+                seriesDetalle.push(`${pesoVal}kg${esUnil ? '/lado' : ''} x ${repsVal} reps`);
             }
         });
 
@@ -324,7 +373,7 @@ routineWorkoutForm.addEventListener('submit', (e) => {
     routineWorkoutForm.style.display = 'none';
     selectRutinaFiltro.value = "";
     
-    alert('🎉 ¡Rutina guardada con éxito en tu Logbook e historial!');
+    alert('🎉 ¡Rutina guardada con éxito!');
     actualizarSugerenciasYSelects();
 });
 
@@ -346,7 +395,7 @@ workoutForm.addEventListener('submit', (e) => {
     alert('🎉 ¡Serie guardada!');
 });
 
-// --- DASHBOARD CALOR MUSCULAR ---
+// DASHBOARD DE RANGOS
 function renderizarNivelesMusculares() {
     contenedorNivelesMusculares.innerHTML = '';
     const grupos = ["Pecho", "Espalda", "Cuádriceps", "Isquiotibiales", "Hombro", "Bíceps", "Tríceps", "Antebrazos", "Gemelos", "Aductores", "Abductores"];
@@ -372,9 +421,11 @@ function renderizarNivelesMusculares() {
             const maxPeso = Math.max(...registros.map(r => parseFloat(r.peso)));
             const rangoInfo = calcularRangoEjercicio(ej, maxPeso);
             sumaNiveles += rangoInfo.nivel;
+            const esUnil = esEjercicioUnilateral(ej);
 
+            let aclaracionUnil = esUnil ? ` <em>(${maxPeso}kg/lado = ${rangoInfo.pesoEfectivo}kg total)</em>` : "";
             let notaTxt = registros[registros.length - 1].nota ? ` <em>(Nota: "${registros[registros.length - 1].nota}")</em>` : "";
-            return `• ${ej}: <strong>${maxPeso} kg</strong> (<span style="color:${COLORES_NIVEL[rangoInfo.nivel]}">${rangoInfo.nombre}</span>)${notaTxt}`;
+            return `• ${ej}: <strong>${maxPeso} kg</strong>${aclaracionUnil} (<span style="color:${COLORES_NIVEL[rangoInfo.nivel]}">${rangoInfo.nombre}</span>)${notaTxt}`;
         }).join('<br>');
 
         const nivelPromedio = Math.round(sumaNiveles / ejerciciosUnicos.length);
@@ -393,7 +444,7 @@ function renderizarNivelesMusculares() {
     });
 }
 
-// --- GRÁFICOS DE EVOLUCIÓN (STATS) ---
+// GRÁFICOS (STATS)
 function actualizarSelectStats() {
     const ejerciciosUnicos = [...new Set(entrenamientos.map(i => i.ejercicio))].sort();
     selectEjercicioStats.innerHTML = '<option value="">-- Elegí un ejercicio --</option>';
@@ -416,13 +467,14 @@ function actualizarGraficoEvolucion() {
     if (!ejercicioSeleccionado) return;
 
     const registros = entrenamientos.filter(i => i.ejercicio === ejercicioSeleccionado);
+    const esUnil = esEjercicioUnilateral(ejercicioSeleccionado);
     
-    // Agrupar peso máximo por fecha
     const datosPorFecha = {};
     registros.forEach(r => {
         const pesoNum = parseFloat(r.peso);
-        if (!datosPorFecha[r.fecha] || pesoNum > datosPorFecha[r.fecha]) {
-            datosPorFecha[r.fecha] = pesoNum;
+        const pesoEfectivo = esUnil ? (pesoNum * 2) : pesoNum;
+        if (!datosPorFecha[r.fecha] || pesoEfectivo > datosPorFecha[r.fecha]) {
+            datosPorFecha[r.fecha] = pesoEfectivo;
         }
     });
 
@@ -434,7 +486,7 @@ function actualizarGraficoEvolucion() {
         data: {
             labels: fechas,
             datasets: [{
-                label: 'Peso Máximo (kg)',
+                label: esUnil ? 'Peso Total Calculado (kg acumulado ambos lados)' : 'Peso Máximo (kg)',
                 data: pesos,
                 borderColor: '#ffd700',
                 backgroundColor: 'rgba(255, 215, 0, 0.1)',
@@ -455,7 +507,7 @@ function actualizarGraficoEvolucion() {
     });
 }
 
-// --- LOGBOOK (HISTORIAL GLOBAL) ---
+// LOGBOOK
 function renderizarLogbook() {
     contenedorLogbook.innerHTML = '';
     if (historialSesiones.length === 0) {
@@ -463,7 +515,7 @@ function renderizarLogbook() {
         return;
     }
 
-    historialSesiones.forEach((sesion, idx) => {
+    historialSesiones.forEach((sesion) => {
         let ejerciciosHtml = sesion.ejercicios.map(e => `
             <div style="font-size: 13px; margin-top: 4px;">
                 <strong>${e.ejercicio}:</strong> ${e.detalle} 
@@ -483,40 +535,71 @@ function renderizarLogbook() {
     });
 }
 
-// --- LOGROS Y MEDALLAS ---
+// SISTEMA DE 20 LOGROS EXPANDIDO
 function renderizarLogros() {
     contenedorLogros.innerHTML = '';
 
     const totalEntrenos = entrenamientos.length;
-    const pesoMaxAbsoluto = entrenamientos.length > 0 ? Math.max(...entrenamientos.map(i => parseFloat(i.peso))) : 0;
+    
+    const pesosEfectivos = entrenamientos.map(i => {
+        const p = parseFloat(i.peso);
+        return esEjercicioUnilateral(i.ejercicio) ? (p * 2) : p;
+    });
+    const pesoMaxAbsoluto = pesosEfectivos.length > 0 ? Math.max(...pesosEfectivos) : 0;
+    
     const totalSesiones = historialSesiones.length;
+    const gruposDistintos = [...new Set(entrenamientos.map(i => obtenerGrupoMuscular(i.ejercicio)))].length;
+    const ejerciciosDistintos = [...new Set(entrenamientos.map(i => i.ejercicio))].length;
+    const tieneNotas = entrenamientos.some(i => i.nota && i.nota.trim() !== '') || historialSesiones.some(s => s.notaSesion && s.notaSesion.trim() !== '');
+    const tieneUnilateral = entrenamientos.some(i => esEjercicioUnilateral(i.ejercicio));
+    const tienePierna = entrenamientos.some(i => {
+        const g = obtenerGrupoMuscular(i.ejercicio);
+        return g === "Cuádriceps" || g === "Isquiotibiales" || g === "Gemelos";
+    });
+    const tieneBrazos = entrenamientos.some(i => {
+        const g = obtenerGrupoMuscular(i.ejercicio);
+        return g === "Bíceps" || g === "Tríceps" || g === "Antebrazos";
+    });
+    const tieneRutinaCreada = rutinasGuardadas.length > 0;
+
+    let conteoIntermedio = 0;
+    let conteoElite = 0;
+
+    const ejerciciosUnicos = [...new Set(entrenamientos.map(i => i.ejercicio))];
+    ejerciciosUnicos.forEach(ej => {
+        const reg = entrenamientos.filter(i => i.ejercicio === ej);
+        const maxP = Math.max(...reg.map(r => parseFloat(r.peso)));
+        const rInfo = calcularRangoEjercicio(ej, maxP);
+
+        if (rInfo.nivel >= 3) conteoIntermedio++;
+        if (rInfo.nivel >= 4) conteoElite++;
+    });
 
     const listaLogros = [
-        {
-            titulo: "Primeros Pasos",
-            desc: "Registrá tu primer ejercicio en la app.",
-            icono: "🐣",
-            desbloqueado: totalEntrenos > 0
-        },
-        {
-            titulo: "Bestia de Carga",
-            desc: "Superá los 100 kg en cualquier ejercicio.",
-            icono: "🦍",
-            desbloqueado: pesoMaxAbsoluto >= 100
-        },
-        {
-            titulo: "Constancia de Hierro",
-            desc: "Completá y guardá 3 rutinas entrenando.",
-            icono: "🔥",
-            desbloqueado: totalSesiones >= 3
-        },
-        {
-            titulo: "Atleta Dedicado",
-            desc: "Registrá más de 20 series totales en tu historial.",
-            icono: "⚡",
-            desbloqueado: totalEntrenos >= 20
-        }
+        { titulo: "Primeros Pasos", desc: "Registrá tu primer ejercicio en la app.", icono: "🐣", desbloqueado: totalEntrenos > 0 },
+        { titulo: "Bestia de Carga", desc: "Superá los 100 kg en un ejercicio (peso total).", icono: "🦍", desbloqueado: pesoMaxAbsoluto >= 100 },
+        { titulo: "Rompiendo Límites", desc: "Superá los 150 kg en un ejercicio.", icono: "🚀", desbloqueado: pesoMaxAbsoluto >= 150 },
+        { titulo: "Fuerza Bruta", desc: "Superá los 200 kg en un ejercicio.", icono: "🗿", desbloqueado: pesoMaxAbsoluto >= 200 },
+        { titulo: "Constancia de Hierro", desc: "Completá y guardá 3 sesiones de rutina.", icono: "🔥", desbloqueado: totalSesiones >= 3 },
+        { titulo: "Atleta Dedicado", desc: "Registrá más de 20 series totales.", icono: "⚡", desbloqueado: totalEntrenos >= 20 },
+        { titulo: "Maratón de Series", desc: "Acumulá 50 series registradas en tu historial.", icono: "🏋️‍♂️", desbloqueado: totalEntrenos >= 50 },
+        { titulo: "Titán de la Fuerza", desc: "Alcanzá el nivel Intermedio en al menos 1 ejercicio.", icono: "🛡️", desbloqueado: conteoIntermedio >= 1 },
+        { titulo: "Cuerpo Balanceado", desc: "Registrá ejercicios de al menos 5 músculos distintos.", icono: "🎯", desbloqueado: gruposDistintos >= 5 },
+        { titulo: "Modo Élite", desc: "Alcanzá el rango Avanzado o Élite en un ejercicio.", icono: "🏆", desbloqueado: conteoElite >= 1 },
+        { titulo: "Nivel Leyenda", desc: "Alcanzá el rango Avanzado o Élite en 3 músculos distintos.", icono: "💎", desbloqueado: conteoElite >= 3 },
+        { titulo: "Leyenda del Gym", desc: "Completá más de 10 sesiones totales de rutinas.", icono: "👑", desbloqueado: totalSesiones >= 10 },
+        { titulo: "Dedicación Absoluta", desc: "Completá 25 sesiones totales en el Logbook.", icono: "🧘", desbloqueado: totalSesiones >= 25 },
+        { titulo: "Anatómico Preciso", desc: "Guardá una nota o sensación en un entrenamiento.", icono: "📝", desbloqueado: tieneNotas },
+        { titulo: "Maestro Unilateral", desc: "Registrá una serie en un ejercicio con mancuernas o unilateral.", icono: "⚖️", desbloqueado: tieneUnilateral },
+        { titulo: "Día de Pierna", desc: "Registrá al menos un ejercicio de piernas.", icono: "🦵", desbloqueado: tienePierna },
+        { titulo: "Brazos de Acero", desc: "Registrá ejercicios de Bíceps, Tríceps o Antebrazos.", icono: "🪵", desbloqueado: tieneBrazos },
+        { titulo: "Rutina Pro", desc: "Diseñá y guardá tu primera rutina personalizada.", icono: "🎒", desbloqueado: tieneRutinaCreada },
+        { titulo: "Explorador del Gym", desc: "Registrá 10 ejercicios diferentes en tu historial.", icono: "🧭", desbloqueado: ejerciciosDistintos >= 10 },
+        { titulo: "Coleccionista", desc: "Desbloqueá al menos 10 logros en la app.", icono: "🏅", desbloqueado: false }
     ];
+
+    const desbloqueadosCount = listaLogros.filter(l => l.desbloqueado).length;
+    listaLogros[19].desbloqueado = desbloqueadosCount >= 10;
 
     listaLogros.forEach(l => {
         contenedorLogros.innerHTML += `
@@ -531,7 +614,44 @@ function renderizarLogros() {
     });
 }
 
-// Rutinas
+// EXPORTAR E IMPORTAR DATOS
+function exportarDatos() {
+    const backup = {
+        entrenamientos: entrenamientos,
+        rutinasGuardadas: rutinasGuardadas,
+        historialSesiones: historialSesiones
+    };
+
+    const blob = new Blob([JSON.stringify(backup, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `gym_tracker_backup_${new Date().toISOString().slice(0,10)}.json`;
+    a.click();
+}
+
+function importarDatos(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const data = JSON.parse(e.target.result);
+            if (data.entrenamientos) localStorage.setItem('gym_tracker_data', JSON.stringify(data.entrenamientos));
+            if (data.rutinasGuardadas) localStorage.setItem('gym_tracker_rutinas', JSON.stringify(data.rutinasGuardadas));
+            if (data.historialSesiones) localStorage.setItem('gym_tracker_logbook', JSON.stringify(data.historialSesiones));
+
+            alert('🎉 ¡Datos importados con éxito! La página se va a recargar.');
+            location.reload();
+        } catch (err) {
+            alert('❌ Archivo de respaldo no válido.');
+        }
+    };
+    reader.readAsText(file);
+}
+
+// RUTINAS
 btnAgregarEjercicioRutina.addEventListener('click', () => {
     const ej = inputEjercicioRutina.value.trim();
     if (ej && !ejerciciosRutinaTemporal.includes(ej)) {
@@ -637,6 +757,6 @@ function eliminarRutina(idx) {
     }
 }
 
-// Inicio
+// INICIO
 actualizarSugerenciasYSelects();
 renderizarRutinasGuardadas();
