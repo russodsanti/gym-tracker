@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GymTracker Pro - Black & Yellow</title>
-    <!-- Importamos Chart.js para los gráficos de evolución -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -13,7 +12,7 @@
     <div class="app-container">
         <header>
             <h1>⚡ GYM TRACKER PRO</h1>
-            <p class="subtitle">Entrená pesado, superá tus marcas y desbloquea logros</p>
+            <p class="subtitle">Entrená pesado, superá tus marcas y desbloqueá logros</p>
         </header>
 
         <!-- Pestañas de Navegación -->
@@ -24,6 +23,7 @@
             <button id="btn-tab-stats" class="tab-btn" onclick="cambiarPestana('stats')">📈 Stats</button>
             <button id="btn-tab-logbook" class="tab-btn" onclick="cambiarPestana('logbook')">📅 Logbook</button>
             <button id="btn-tab-logros" class="tab-btn" onclick="cambiarPestana('logros')">🏅 Logros</button>
+            <button id="btn-tab-config" class="tab-btn" onclick="cambiarPestana('config')">⚙️ Datos</button>
         </nav>
 
         <!-- ================= SECCIÓN 1: REGISTRAR ================= -->
@@ -37,7 +37,6 @@
                     </select>
                 </div>
 
-                <!-- Contenedor dinámico de ejercicios y series -->
                 <form id="routine-workout-form" style="display: none;">
                     <div id="contenedor-ejercicios-rutina"></div>
                     
@@ -56,7 +55,7 @@
                 <form id="workout-form">
                     <div class="form-group">
                         <label for="ejercicio">Ejercicio:</label>
-                        <input type="text" id="ejercicio" list="lista-ejercicios" placeholder="Ej. Banco plano, Curl de bíceps..." autocomplete="off" required>
+                        <input type="text" id="ejercicio" list="lista-ejercicios" placeholder="Ej. Banco plano, Sentadilla libre..." autocomplete="off" required>
                     </div>
 
                     <div id="ultimo-peso-info" class="info-banner">
@@ -66,7 +65,7 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="peso">Peso (kg):</label>
-                            <input type="number" id="peso" step="0.5" min="0" placeholder="Ej. 60" required>
+                            <input type="number" id="peso" step="0.5" min="0" placeholder="Ej. 20" required>
                         </div>
                         <div class="form-group">
                             <label for="repeticiones">Repeticiones:</label>
@@ -156,7 +155,7 @@
             </div>
         </section>
 
-        <!-- ================= SECCIÓN 5: LOGBOOK (HISTORIAL GLOBAL) ================= -->
+        <!-- ================= SECCIÓN 5: LOGBOOK ================= -->
         <section id="seccion-logbook" class="tab-section">
             <div class="glass-card">
                 <h2>Historial de Entrenamientos</h2>
@@ -169,6 +168,23 @@
             <div class="glass-card">
                 <h2>Tus Logros y Medallas</h2>
                 <div id="contenedor-logros" class="logros-grid"></div>
+            </div>
+        </section>
+
+        <!-- ================= SECCIÓN 7: RESPALDO Y CONFIGURACIÓN ================= -->
+        <section id="seccion-config" class="tab-section">
+            <div class="glass-card">
+                <h2>Copias de Seguridad (Respaldos)</h2>
+                <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 15px;">
+                    Usá esta opción para transferir fácilmente tus datos de la PC al celular sin perder tu progreso.
+                </p>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <button class="btn btn-secondary" onclick="exportarDatos()">📥 Exportar copia de datos (Descargar JSON)</button>
+                    <div style="margin-top: 10px;">
+                        <label for="input-importar" style="font-size: 13px; font-weight: bold;">📤 Cargar copia de datos:</label>
+                        <input type="file" id="input-importar" accept=".json" onchange="importarDatos(event)" style="padding: 6px;">
+                    </div>
+                </div>
             </div>
         </section>
 
