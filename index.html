@@ -23,7 +23,7 @@
             <button id="btn-tab-stats" class="tab-btn" onclick="cambiarPestana('stats')">📈 Stats</button>
             <button id="btn-tab-logbook" class="tab-btn" onclick="cambiarPestana('logbook')">📅 Logbook</button>
             <button id="btn-tab-logros" class="tab-btn" onclick="cambiarPestana('logros')">🏅 Logros</button>
-            <button id="btn-tab-config" class="tab-btn" onclick="cambiarPestana('config')">⚙️ Datos</button>
+            <button id="btn-tab-config" class="tab-btn" onclick="cambiarPestana('config')">⚙️ Ajustes</button>
         </nav>
 
         <!-- ================= SECCIÓN 1: REGISTRAR ================= -->
@@ -149,6 +149,13 @@
                         <option value="">-- Elegí un ejercicio --</option>
                     </select>
                 </div>
+                
+                <!-- Tarjeta de 1RM Teórico -->
+                <div id="rm-teorico-banner" class="info-banner" style="margin-top: 15px; display: none;">
+                    🎯 <strong>1RM Teórico estimado:</strong> <span id="rm-valor" style="color: var(--accent); font-size: 16px; font-weight: bold;">0 kg</span>
+                    <br><small style="color: var(--text-secondary);">Calculado automáticamente según tu mejor marca reciente.</small>
+                </div>
+
                 <div class="chart-container" style="position: relative; height:250px; width:100%; margin-top: 15px;">
                     <canvas id="graficoEvolucion"></canvas>
                 </div>
@@ -174,7 +181,20 @@
         <!-- ================= SECCIÓN 7: RESPALDO Y CONFIGURACIÓN ================= -->
         <section id="seccion-config" class="tab-section">
             <div class="glass-card">
-                <h2>Copias de Seguridad (Respaldos)</h2>
+                <h2>🎨 Apariencia de la App</h2>
+                <div class="form-group">
+                    <label for="select-tema">Seleccionar Tema de Color:</label>
+                    <select id="select-tema" onchange="cambiarTemaColor(this.value)">
+                        <option value="default">🟡 Black & Yellow (Predeterminado)</option>
+                        <option value="crimson">🔴 Dark Crimson (Negro y Rojo)</option>
+                        <option value="neon">🟢 Neon Cyber (Negro y Verde)</option>
+                        <option value="light">⚪ Light Mode (Fondo Claro)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="glass-card">
+                <h2>💾 Copias de Seguridad (Respaldos)</h2>
                 <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 15px;">
                     Usá esta opción para transferir fácilmente tus datos de la PC al celular sin perder tu progreso.
                 </p>
