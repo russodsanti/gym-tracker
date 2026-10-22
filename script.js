@@ -78,6 +78,7 @@ const COLORES_NIVEL = {
 let entrenamientos = JSON.parse(localStorage.getItem('gym_tracker_data')) || [];
 let rutinasGuardadas = JSON.parse(localStorage.getItem('gym_tracker_rutinas')) || [];
 let historialSesiones = JSON.parse(localStorage.getItem('gym_tracker_logbook')) || [];
+let temaGuardado = localStorage.getItem('gym_tracker_tema') || 'default';
 let ejerciciosRutinaTemporal = [];
 let miChart = null;
 
@@ -161,6 +162,26 @@ function calcularRangoEjercicio(nombreEjercicio, pesoIngresado) {
     if (pesoEfectivo < rangos[2]) return { nivel: 3, nombre: "Intermedio", pesoEfectivo };
     if (pesoEfectivo < rangos[3]) return { nivel: 4, nombre: "Avanzado", pesoEfectivo };
     return { nivel: 5, nombre: "Élite", pesoEfectivo };
+}
+
+// --- TEMAS VISUALES ---
+function cambiarTemaColor(nombreTema) {
+    document.body.className = ''; // Limpiar clases anteriores
+    if (nombreTema !== 'default') {
+        document.body.classList.add(`theme-${nombreTema}`);
+    }
+    localStorage.setItem('gym_tracker_tema', nombreTema);
+    
+    // Si hay un gráfico renderizado, actualizar su color
+    if (selectEjercicioStats && selectEjercicioStats.value) {
+        actualizarGraficoEvolucion();
+    }
+}
+
+function cargarTemaGuardado() {
+    const select = document.getElementById('select-tema');
+    if (select) select.value = temaGuardado;
+    cambiarTemaColor(temaGuardado);
 }
 
 function cambiarPestana(pestana) {
@@ -263,7 +284,7 @@ function cargarRutinaParaEntrenar() {
         const previos = entrenamientos.filter(i => normalizarTexto(i.ejercicio) === ejNorm);
         
         let historialTexto = "💡 Sin registros anteriores.";
-        let notaUnilateral = esUnil ? `<br><small style="color:#aaa;">(Ingresá peso por lado/mancuerna)</small>` : "";
+        let notaUnilateral = esUnil ? `<br><small style="color:var(--text-secondary);">(Ingresá peso por lado/mancuerna)</small>` : "";
 
         if (previos.length > 0) {
             const maxPeso = Math.max(...previos.map(p => parseFloat(p.peso)));
@@ -444,7 +465,7 @@ function renderizarNivelesMusculares() {
     });
 }
 
-// GRÁFICOS (STATS)
+// GRÁFICOS Y CÁLCULO DE 1RM TEÓRICO (STATS)
 function actualizarSelectStats() {
     const ejerciciosUnicos = [...new Set(entrenamientos.map(i => i.ejercicio))].sort();
     selectEjercicioStats.innerHTML = '<option value="">-- Elegí un ejercicio --</option>';
@@ -454,21 +475,49 @@ function actualizarSelectStats() {
         opt.textContent = ej;
         selectEjercicioStats.appendChild(opt);
     });
+    document.getElementById('rm-teorico-banner').style.display = 'none';
 }
 
 function actualizarGraficoEvolucion() {
     const ejercicioSeleccionado = selectEjercicioStats.value;
     const ctx = document.getElementById('graficoEvolucion').getContext('2d');
+    const rmBanner = document.getElementById('rm-teorico-banner');
+    const rmValor = document.getElementById('rm-valor');
 
     if (miChart) {
         miChart.destroy();
     }
 
-    if (!ejercicioSeleccionado) return;
+    if (!ejercicioSeleccionado) {
+        rmBanner.style.display = 'none';
+        return;
+    }
 
     const registros = entrenamientos.filter(i => i.ejercicio === ejercicioSeleccionado);
     const esUnil = esEjercicioUnilateral(ejercicioSeleccionado);
     
+    // Cálculo de 1RM Teórico (Fórmula Brzycki)
+    let mejor1RM = 0;
+    registros.forEach(r => {
+        const p = parseFloat(r.peso);
+        const pesoEfectivo = esUnil ? (p * 2) : p;
+        const reps = parseInt(r.repeticiones) || 1;
+        
+        if (reps < 37) {
+            let rmCalculado = pesoEfectivo * (36 / (37 - reps));
+            if (rmCalculado > mejor1RM) {
+                mejor1RM = rmCalculado;
+            }
+        }
+    });
+
+    if (mejor1RM > 0) {
+        rmValor.textContent = `${Math.round(mejor1RM)} kg`;
+        rmBanner.style.display = 'block';
+    } else {
+        rmBanner.style.display = 'none';
+    }
+
     const datosPorFecha = {};
     registros.forEach(r => {
         const pesoNum = parseFloat(r.peso);
@@ -481,6 +530,9 @@ function actualizarGraficoEvolucion() {
     const fechas = Object.keys(datosPorFecha);
     const pesos = Object.values(datosPorFecha);
 
+    // Obtener el color del acento actual desde CSS
+    const colorAccent = getComputedStyle(document.body).getPropertyValue('--accent').trim() || '#ffd700';
+
     miChart = new Chart(ctx, {
         type: 'line',
         data: {
@@ -488,8 +540,8 @@ function actualizarGraficoEvolucion() {
             datasets: [{
                 label: esUnil ? 'Peso Total Calculado (kg acumulado ambos lados)' : 'Peso Máximo (kg)',
                 data: pesos,
-                borderColor: '#ffd700',
-                backgroundColor: 'rgba(255, 215, 0, 0.1)',
+                borderColor: colorAccent,
+                backgroundColor: 'rgba(255, 255, 255, 0.05)',
                 borderWidth: 2,
                 fill: true,
                 tension: 0.2
@@ -499,10 +551,10 @@ function actualizarGraficoEvolucion() {
             responsive: true,
             maintainAspectRatio: false,
             scales: {
-                x: { ticks: { color: '#aaaaaa', font: { size: 10 } }, grid: { color: '#2c2c2c' } },
-                y: { ticks: { color: '#aaaaaa', font: { size: 10 } }, grid: { color: '#2c2c2c' } }
+                x: { ticks: { color: 'var(--text-secondary)', font: { size: 10 } }, grid: { color: 'var(--border-color)' } },
+                y: { ticks: { color: 'var(--text-secondary)', font: { size: 10 } }, grid: { color: 'var(--border-color)' } }
             },
-            plugins: { legend: { labels: { color: '#ffffff' } } }
+            plugins: { legend: { labels: { color: 'var(--text-primary)' } } }
         }
     });
 }
@@ -535,7 +587,7 @@ function renderizarLogbook() {
     });
 }
 
-// SISTEMA DE 20 LOGROS EXPANDIDO
+// SISTEMA DE 20 LOGROS
 function renderizarLogros() {
     contenedorLogros.innerHTML = '';
 
@@ -758,5 +810,6 @@ function eliminarRutina(idx) {
 }
 
 // INICIO
+cargarTemaGuardado();
 actualizarSugerenciasYSelects();
 renderizarRutinasGuardadas();
