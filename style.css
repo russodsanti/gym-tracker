@@ -1,0 +1,432 @@
+:root {
+    --bg-main: #000000;
+    --bg-card: #121212;
+    --bg-input: #1a1a1a;
+    --border-color: #2c2c2c;
+    --text-primary: #ffffff;
+    --text-secondary: #aaaaaa;
+    --accent: #ffd700;
+    --accent-hover: #e5c100;
+    --accent-text: #000000;
+    --danger: #ff4d4d;
+    --info-bg: #1c1c1c;
+    --info-text: #ffd700;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 650px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+    letter-spacing: 1px;
+    color: var(--accent);
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+/* Pestañas (Scroll horizontal para que entren todas cómodas) */
+.nav-tabs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+}
+
+.tab-btn {
+    flex: 0 0 auto;
+    padding: 8px 10px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-card);
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.25s ease;
+}
+
+.tab-btn.active {
+    background-color: var(--accent);
+    color: var(--accent-text);
+    border-color: var(--accent);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+}
+
+.tab-section {
+    display: none;
+}
+
+.tab-section.active {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Tarjetas */
+.glass-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    margin-bottom: 20px;
+}
+
+.glass-card h2 {
+    margin-top: 0;
+    font-size: 18px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-bottom: 16px;
+    color: var(--accent);
+}
+
+/* Leyenda de Colores */
+.rank-legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.legend-item {
+    font-size: 11px;
+    font-weight: bold;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.legend-item::before {
+    content: "";
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: var(--color);
+}
+
+/* Formularios */
+.form-group {
+    margin-bottom: 14px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 14px;
+    transition: border-color 0.2s;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.input-action-row {
+    display: flex;
+    gap: 10px;
+}
+
+/* Tarjeta de Ejercicio en Rutina */
+.routine-exercise-box {
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-color);
+    padding: 14px;
+    border-radius: 8px;
+    margin-bottom: 14px;
+}
+
+.routine-exercise-box h4 {
+    margin: 0 0 6px 0;
+    color: var(--text-primary);
+    font-size: 15px;
+}
+
+.historial-directo-box {
+    background-color: #1c1c1c;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 8px 10px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.serie-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+    background-color: rgba(255, 255, 255, 0.03);
+    padding: 6px 8px;
+    border-radius: 6px;
+}
+
+.serie-row span {
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--accent);
+    min-width: 50px;
+}
+
+/* Botones */
+.btn {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-accent {
+    width: 100%;
+    background-color: var(--accent);
+    color: var(--accent-text);
+}
+
+.btn-accent:hover {
+    background-color: var(--accent-hover);
+}
+
+.btn-secondary {
+    background-color: #2c2c2c;
+    color: white;
+    white-space: nowrap;
+}
+
+.btn-secondary:hover {
+    background-color: #3a3a3a;
+}
+
+/* Banner informativo */
+.info-banner {
+    background-color: var(--info-bg);
+    border: 1px solid var(--border-color);
+    color: var(--accent);
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-bottom: 14px;
+    line-height: 1.4;
+}
+
+/* Listas e items */
+.temp-exercise-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.temp-item {
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-color);
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.empty-notice {
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 10px;
+    font-style: italic;
+    font-size: 13px;
+}
+
+/* Tarjetas de Rutinas Guardadas */
+.routine-card {
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 12px;
+}
+
+.routine-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 6px;
+    margin-bottom: 8px;
+}
+
+.routine-card-header h3 {
+    margin: 0;
+    color: var(--accent);
+    font-size: 15px;
+}
+
+.routine-exercise-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    padding: 5px 0;
+    border-bottom: 1px dashed rgba(255,255,255,0.05);
+}
+
+.routine-exercise-item:last-child {
+    border-bottom: none;
+}
+
+/* Badges y tarjetas musculares */
+.muscle-badge {
+    background-color: #2c2c2c;
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 20px;
+}
+
+.rank-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.muscle-rank-card {
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-left: 5px solid var(--border-color);
+    padding: 14px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.muscle-rank-card h3 {
+    margin: 0 0 6px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+}
+
+/* Logbook (Historial de Sesiones) */
+.logbook-card {
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-color);
+    padding: 14px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.logbook-card h3 {
+    margin: 0 0 4px 0;
+    color: var(--accent);
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Logros / Medallas */
+.logros-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.logro-item {
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-color);
+    padding: 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logro-item.desbloqueado {
+    border-color: var(--accent);
+    background-color: rgba(255, 215, 0, 0.05);
+}
+
+.logro-icono {
+    font-size: 26px;
+}
+
+.logro-info h4 {
+    margin: 0 0 2px 0;
+    font-size: 14px;
+    color: var(--text-primary);
+}
+
+.logro-info p {
+    margin: 0;
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.icon-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 15px;
+    padding: 4px;
+    transition: color 0.2s;
+}
+
+.icon-btn:hover {
+    color: var(--danger);
+}

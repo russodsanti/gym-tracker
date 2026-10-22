@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GymTracker Pro - Black & Yellow</title>
+    <!-- Importamos Chart.js para los gráficos de evolución -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <header>
+            <h1>⚡ GYM TRACKER PRO</h1>
+            <p class="subtitle">Entrená pesado, superá tus marcas y desbloquea logros</p>
+        </header>
+
+        <!-- Pestañas de Navegación -->
+        <nav class="nav-tabs">
+            <button id="btn-tab-registrar" class="tab-btn active" onclick="cambiarPestana('registrar')">🏋️ Entrenar</button>
+            <button id="btn-tab-rutinas" class="tab-btn" onclick="cambiarPestana('rutinas')">📋 Rutinas</button>
+            <button id="btn-tab-niveles" class="tab-btn" onclick="cambiarPestana('niveles')">🏆 Rangos</button>
+            <button id="btn-tab-stats" class="tab-btn" onclick="cambiarPestana('stats')">📈 Stats</button>
+            <button id="btn-tab-logbook" class="tab-btn" onclick="cambiarPestana('logbook')">📅 Logbook</button>
+            <button id="btn-tab-logros" class="tab-btn" onclick="cambiarPestana('logros')">🏅 Logros</button>
+        </nav>
+
+        <!-- ================= SECCIÓN 1: REGISTRAR ================= -->
+        <section id="seccion-registrar" class="tab-section active">
+            <div class="glass-card">
+                <h2>Cargar Rutina Guardada</h2>
+                <div class="form-group">
+                    <label for="select-rutina-filtro">Seleccioná una rutina para entrenar:</label>
+                    <select id="select-rutina-filtro" onchange="cargarRutinaParaEntrenar()">
+                        <option value="">-- Selecciona una rutina guardada --</option>
+                    </select>
+                </div>
+
+                <!-- Contenedor dinámico de ejercicios y series -->
+                <form id="routine-workout-form" style="display: none;">
+                    <div id="contenedor-ejercicios-rutina"></div>
+                    
+                    <div class="form-group" style="margin-top: 15px;">
+                        <label for="nota-sesion">📝 Nota de la sesión / sensaciones:</label>
+                        <input type="text" id="nota-sesion" placeholder="Ej. Excelente energía, polea pesada..." autocomplete="off">
+                    </div>
+
+                    <button type="submit" class="btn btn-accent" style="margin-top: 10px;">💾 Guardar Rutina Completa</button>
+                </form>
+            </div>
+
+            <!-- Registrar Ejercicio Suelto -->
+            <div class="glass-card">
+                <h2>Registrar Ejercicio Suelto</h2>
+                <form id="workout-form">
+                    <div class="form-group">
+                        <label for="ejercicio">Ejercicio:</label>
+                        <input type="text" id="ejercicio" list="lista-ejercicios" placeholder="Ej. Banco plano, Curl de bíceps..." autocomplete="off" required>
+                    </div>
+
+                    <div id="ultimo-peso-info" class="info-banner">
+                        💡 Buscá o escribí un ejercicio para ver cuánto tiraste la última vez.
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="peso">Peso (kg):</label>
+                            <input type="number" id="peso" step="0.5" min="0" placeholder="Ej. 60" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="repeticiones">Repeticiones:</label>
+                            <input type="number" id="repeticiones" min="1" placeholder="Ej. 10" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nota-suelta">📝 Nota del ejercicio:</label>
+                        <input type="text" id="nota-suelta" placeholder="Ej. Cuidar la bajada..." autocomplete="off">
+                    </div>
+
+                    <button type="submit" class="btn btn-secondary" style="width: 100%; margin-top: 5px;">Guardar Serie Suelta</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- ================= SECCIÓN 2: RUTINAS ================= -->
+        <section id="seccion-rutinas" class="tab-section">
+            <div class="glass-card">
+                <h2>Crear Rutina Nueva</h2>
+                <form id="routine-form">
+                    <div class="form-group">
+                        <label for="nombre-rutina">Nombre de la Rutina:</label>
+                        <input type="text" id="nombre-rutina" placeholder="Ej. Día de Pecho y Tríceps..." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="input-ejercicio-rutina">Añadir Ejercicio:</label>
+                        <div class="input-action-row">
+                            <input type="text" id="input-ejercicio-rutina" list="lista-ejercicios" placeholder="Buscá un ejercicio..." autocomplete="off">
+                            <button type="button" id="btn-agregar-ejercicio-rutina" class="btn btn-secondary">Añadir</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Ejercicios agregados a esta rutina:</label>
+                        <ul id="lista-ejercicios-temporales" class="temp-exercise-list">
+                            <li class="empty-notice">Todavía no agregaste ejercicios.</li>
+                        </ul>
+                    </div>
+
+                    <button type="submit" class="btn btn-accent">Guardar Rutina</button>
+                </form>
+            </div>
+
+            <div class="glass-card">
+                <h2>Mis Rutinas Guardadas</h2>
+                <div id="contenedor-rutinas-guardadas" class="routines-grid"></div>
+            </div>
+        </section>
+
+        <!-- ================= SECCIÓN 3: NIVELES Y CALOR MUSCULAR ================= -->
+        <section id="seccion-niveles" class="tab-section">
+            <div class="glass-card">
+                <h2>Estado de tus Músculos</h2>
+                <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 20px;">
+                    Niveles calculados en base a tus marcas máximas guardadas.
+                </p>
+
+                <div class="rank-legend">
+                    <span class="legend-item" style="--color: #333;">Sin datos</span>
+                    <span class="legend-item" style="--color: #ef4444;">Novato</span>
+                    <span class="legend-item" style="--color: #f97316;">Principiante</span>
+                    <span class="legend-item" style="--color: #eab308;">Intermedio</span>
+                    <span class="legend-item" style="--color: #22c55e;">Avanzado</span>
+                    <span class="legend-item" style="--color: #06b6d4;">Élite</span>
+                </div>
+
+                <div id="contenedor-niveles-musculares" class="niveles-grid"></div>
+            </div>
+        </section>
+
+        <!-- ================= SECCIÓN 4: ESTADÍSTICAS Y GRÁFICOS ================= -->
+        <section id="seccion-stats" class="tab-section">
+            <div class="glass-card">
+                <h2>Evolución de Marcas</h2>
+                <div class="form-group">
+                    <label for="select-ejercicio-stats">Seleccionar Ejercicio:</label>
+                    <select id="select-ejercicio-stats" onchange="actualizarGraficoEvolucion()">
+                        <option value="">-- Elegí un ejercicio --</option>
+                    </select>
+                </div>
+                <div class="chart-container" style="position: relative; height:250px; width:100%; margin-top: 15px;">
+                    <canvas id="graficoEvolucion"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECCIÓN 5: LOGBOOK (HISTORIAL GLOBAL) ================= -->
+        <section id="seccion-logbook" class="tab-section">
+            <div class="glass-card">
+                <h2>Historial de Entrenamientos</h2>
+                <div id="contenedor-logbook"></div>
+            </div>
+        </section>
+
+        <!-- ================= SECCIÓN 6: LOGROS Y MEDALLAS ================= -->
+        <section id="seccion-logros" class="tab-section">
+            <div class="glass-card">
+                <h2>Tus Logros y Medallas</h2>
+                <div id="contenedor-logros" class="logros-grid"></div>
+            </div>
+        </section>
+
+    </div>
+
+    <datalist id="lista-ejercicios"></datalist>
+
+    <script src="script.js"></script>
+</body>
+</html>
